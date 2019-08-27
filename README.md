@@ -81,3 +81,18 @@ cp /etc/fstab /etc/fstab.orig
 echo "/dev/xvdc   /var/lib/docker                       xfs     defaults        0 0" >>/etc/fsta
 init 6
 ```
+**Install Docker package on all nodes:**
+```
+yum install docker-1.13.1 -y
+```
+Configure docker on all nodes using following steps:
+```
+cp /usr/lib/systemd/system/docker.service /usr/lib/systemd/system/docker.service.orig
+sed -i -e 's/--storage-driver=devicemapper/--storage-driver=overlay2/' /usr/lib/systemd/system/docker.service
+systemctl daemon-reload
+systemctl restart docker
+systemctl enable docker
+systemctl start docker
+```
+-	Verify using the following:
+``` docker info ```
