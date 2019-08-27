@@ -44,14 +44,14 @@ subscription-manager attach --pool=8a85f9936a6f0b99016a6f3effc90f09
   ```
   subscription-manager repos --disable="*"
   ```
-  o	List the remaining yum repositories and note their names under repo id, if any:
-  ```
-  yum repolist
-  ```
-  o	Use yum-config-manager to disable the remaining yum repositories:
-  ```
-  yum-config-manager --disable \*
-  ```
+   -	List the remaining yum repositories and note their names under repo id, if any:
+   ```
+   yum repolist
+   ```
+   -	Use yum-config-manager to disable the remaining yum repositories:
+   ```
+   yum-config-manager --disable \*
+   ```
  -	Enable only the repositories required by OpenShift Container Platform 3.11
  ```
  subscription-manager repos \
@@ -59,5 +59,10 @@ subscription-manager attach --pool=8a85f9936a6f0b99016a6f3effc90f09
     --enable="rhel-7-server-extras-rpms" \
     --enable="rhel-7-server-ose-3.11-rpms" \
     --enable="rhel-7-server-ansible-2.6-rpms"
+```
+### Install base packages
+-	On all the nodes install the following packages as root user
+```
+yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct -y 
 ```
 
