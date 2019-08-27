@@ -35,3 +35,4 @@ subscription-manager refresh
 ```
 subscription-manager list --available --matches '*OpenShift*'
 ```
+-	In the output for the previous command, find the pool ID for an OpenShift Container Platform subscription and attach it. As the below
