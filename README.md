@@ -6,3 +6,6 @@ I created three VMs with the following specs:
  Hostname | IP | Function | CPU | Memory | Storage 
  ---|:---|:---|:---|:---|:---|
 master01.example.com | 158.177.112.229 | Master Node | 16 | 32 | 100 | 
+node01.example.com | 158.177.112.23 | Worker Node | 16 | 32 | 100 |
+infra.example.com | 158.177.112.227 | Infra node | 16 | 32 | 100 |
+node02.example.com | 158.177.112.23 | DNS Node | 16 | 32 | 100 |
