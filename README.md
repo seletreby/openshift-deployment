@@ -36,3 +36,28 @@ subscription-manager refresh
 subscription-manager list --available --matches '*OpenShift*'
 ```
 -	In the output for the previous command, find the pool ID for an OpenShift Container Platform subscription and attach it. As the below
+```
+subscription-manager attach --pool=8a85f9936a6f0b99016a6f3effc90f09
+```
+-	Disable all yum repositories
+  - Disable all the enabled RHSM repositories:
+  ```
+  subscription-manager repos --disable="*"
+  ```
+  o	List the remaining yum repositories and note their names under repo id, if any:
+  ```
+  yum repolist
+  ```
+  o	Use yum-config-manager to disable the remaining yum repositories:
+  ```
+  yum-config-manager --disable \*
+  ```
+ -	Enable only the repositories required by OpenShift Container Platform 3.11
+ ```
+ subscription-manager repos \
+    --enable="rhel-7-server-rpms" \
+    --enable="rhel-7-server-extras-rpms" \
+    --enable="rhel-7-server-ose-3.11-rpms" \
+    --enable="rhel-7-server-ansible-2.6-rpms"
+```
+
