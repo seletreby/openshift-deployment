@@ -65,4 +65,19 @@ subscription-manager attach --pool=8a85f9936a6f0b99016a6f3effc90f09
 ```
 yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct -y 
 ```
-
+-	Install ansible
+```
+yum install -y openshift-ansible
+yum install atomic-openshift-node-3.11* -y
+```
+### Install and configure Docker
+#### Using overlay2 driver
+I added 100 GB raw disks to master01, node01 and infra for the docker. You can use "lsblk" command to list all the available disks. To achieve this, execute the following commands on all my nodes using root user:
+```
+mkfs.xfs -n ftype=1 /dev/xvdc
+mkdir /var/lib/docker
+mount -t xfs /dev/xvdc /var/lib/docker
+cp /etc/fstab /etc/fstab.orig
+echo "/dev/xvdc   /var/lib/docker                       xfs     defaults        0 0" >>/etc/fsta
+init 6
+```
