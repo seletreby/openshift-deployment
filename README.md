@@ -21,3 +21,17 @@ subscription-manager unregister
 ```
 subscription-manager register --username salah_eletreby --serverurl=subscription.rhsm.redhat.com:443/subscription
 ```
+* Copy original redhat configuration (and backup Softlayer)
+```
+cp /etc/rhsm/rhsm.conf /etc/rhsm/rhsm.conf.sl.bkp
+
+cp /etc/rhsm/rhsm.conf.kat-backup /etc/rhsm/rhsm.conf
+```
+* Pull the latest subscription data
+```
+subscription-manager refresh
+```
+* List all available subscription
+```
+subscription-manager list --available --matches '*OpenShift*'
+```
