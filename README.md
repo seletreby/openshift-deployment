@@ -309,6 +309,8 @@ To verify that all openshift nodes are in a ready state, execute the oc get node
 ```
 oc get nodes
 ```
+## Installing and configuring the Metrics Subsystem
+The OpenShift metrics subsystem enables the capture and long-term storage of performance metrics for an OpenShift cluster. Metrics are collected for nodes and for all containers running in each node.
 
 
 
