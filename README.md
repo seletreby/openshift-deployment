@@ -322,8 +322,10 @@ Collects metrics from all nodes in a Kubernetes cluster and forwards them to a s
 The Heapster project was incubated by the Kubernetes community to provide a way for third- party applications to capture performance data from a Kubernetes cluster.
 
 __Hawkular Metrics__
+
 Provides a REST API for storing and querying time-series data. The Hawkular Metrics component is part of the larger Hawkular project.
 Hawkular Metrics uses Cassandra as its data store. Hawkular was created as the successor to the RHQ Project (the upstream to Red Hat JBoss Operations Network product) and is a key piece of the middleware management capabilities of the Red Hat CloudForms product.
 
 __Hawkular Agent__
+
 Collects custom performance metrics from applications and forwards them to Hawkular Metrics for storage. The application provides metrics to the Hawkular Agent.
