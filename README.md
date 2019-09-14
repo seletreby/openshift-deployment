@@ -1,11 +1,11 @@
 # OpenShift 3.11 Deployment
 ## Environment Prerequisite preparation
-I worked on preparing small development Openshift environment based on OpenShift 3.11. The environment will be hosted on Softlayer. 
+I worked on preparing small development Openshift environment based on OpenShift 3.11. The environment will be hosted on Softlayer.
 I created three VMs with the following specs:
 
- Hostname | IP | Function | CPU | Memory | Storage 
+ Hostname | IP | Function | CPU | Memory | Storage
  ---|:---|:---|:---|:---|:---|
-master01.example.com | 158.177.112.229 | Master Node | 16 | 32 | 100 | 
+master01.example.com | 158.177.112.229 | Master Node | 16 | 32 | 100 |
 node01.example.com | 158.177.112.23 | Worker Node | 16 | 32 | 100 |
 infra.example.com | 158.177.112.227 | Infra node | 16 | 32 | 100 |
 node02.example.com | 158.177.112.23 | DNS Node | 16 | 32 | 100 |
@@ -63,7 +63,7 @@ subscription-manager attach --pool=8a85f9936a6f0b99016a6f3effc90f09
 ### Install base packages
 -	On all the nodes install the following packages as root user
 ```
-yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct -y 
+yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct -y
 ```
 -	Install ansible
 ```
@@ -144,7 +144,7 @@ systemctl enable --now dnsmasq
 ```
 -	On each of Redhat openshift node add to /etc/resolv.conf the nameserver on node02.example.com As following:
 ```
-[root@master01 ~]# cat /etc/resolv.conf 
+[root@master01 ~]# cat /etc/resolv.conf
 nameserver 158.177.112.232
 nameserver 10.0.80.11
 nameserver 10.0.80.12
@@ -158,14 +158,14 @@ nameserver 10.0.80.12
 EOF
 ```
 ### Configure host access
-The OpenShift Container Platform installer requires a user that has access to all hosts. 
-#### Configure Password less 
+The OpenShift Container Platform installer requires a user that has access to all hosts.
+#### Configure Password less
 Execute the following to enable ssh password-less
 -	Generate ssh certificate on the master node using the following command:
 ```
 ssh-keygen -t rsa
 ```
-The public key will be written to “~/.ssh/id_rsa.pub” 
+The public key will be written to “~/.ssh/id_rsa.pub”
 -	Add the generated public key to the “~/.ssh/authorized_keys” of all the other nodes:
 ```
 ssh-copy-id root@node01.example.com
@@ -225,8 +225,8 @@ htpasswd /etc/origin/master/htpasswd salah
 ### Customize Inventory file for Installation
 Ansible inventory files describe the details about the hosts in your cluster and the cluster configuration details for your OpenShift Container Platform installation.
 
-Go to ansible files located at: /etc/ansible/hosts. 
--	As a good practice rename your hosts file. 
+Go to ansible files located at: /etc/ansible/hosts.
+-	As a good practice rename your hosts file.
 ```
 mv hosts hosts.org
 ```
@@ -293,14 +293,14 @@ ansible-playbook deploy_cluster.yml
 
 ### Post Installation
 As the system:admin user, add the cluster-admin role to the admin user with the following command:
-First login as system:admin if you aren’t. First check using root user by typing 
+First login as system:admin if you aren’t. First check using root user by typing
 
 ```
 oc whoami
 oc login -u “system:admin”
 oc adm policy add-cluster-role-to-user cluster-admin admin
 ```
-Log to cluster using the admin user 
+Log to cluster using the admin user
 ```
 oc login -u admin -p admin4redhat https://master01.example.com:8443 --insecure-skip-tls-verify=true
 ```
@@ -313,6 +313,4 @@ oc get nodes
 The OpenShift metrics subsystem enables the capture and long-term storage of performance metrics for an OpenShift cluster. Metrics are collected for nodes and for all containers running in each node.
 
 
-
-
-
+![](./images/openshift-metrics-subsystem.png)
