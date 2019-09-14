@@ -313,3 +313,12 @@ oc get nodes
 The OpenShift metrics subsystem enables the capture and long-term storage of performance metrics for an OpenShift cluster. Metrics are collected for nodes and for all containers running in each node.
 
 ![](./images/openshift-metrics-subsystem.png)
+The metrics subsystem is deployed as a set of containers based on the following open source projects:
+__Heapster__
+Collects metrics from all nodes in a Kubernetes cluster and forwards them to a storage engine for long-term storage. Red Hat OpenShift Container Platform uses Hawkular as the storage engine for Heapster.
+The Heapster project was incubated by the Kubernetes community to provide a way for third- party applications to capture performance data from a Kubernetes cluster.
+__Hawkular Metrics__
+Provides a REST API for storing and querying time-series data. The Hawkular Metrics component is part of the larger Hawkular project.
+Hawkular Metrics uses Cassandra as its data store. Hawkular was created as the successor to the RHQ Project (the upstream to Red Hat JBoss Operations Network product) and is a key piece of the middleware management capabilities of the Red Hat CloudForms product.
+__Hawkular Agent__
+Collects custom performance metrics from applications and forwards them to Hawkular Metrics for storage. The application provides metrics to the Hawkular Agent.
