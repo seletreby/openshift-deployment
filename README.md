@@ -78,7 +78,7 @@ mkfs.xfs -n ftype=1 /dev/xvdc
 mkdir /var/lib/docker
 mount -t xfs /dev/xvdc /var/lib/docker
 cp /etc/fstab /etc/fstab.orig
-echo "/dev/xvdc   /var/lib/docker                       xfs     defaults        0 0" >>/etc/fsta
+echo "/dev/xvdc   /var/lib/docker                       xfs     defaults        0 0" >>/etc/fstab
 init 6
 ```
 **Install Docker package on all nodes:**
