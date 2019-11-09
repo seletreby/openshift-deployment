@@ -107,7 +107,7 @@ Add the IP address and hostname to host file of each machine on /etc/hosts
 158.177.112.227 infra.example.com infra
 ```
 or use the following:
-````
+```
 cat << EOF > /etc/hosts
 127.0.0.1 localhost.localdomain localhost
 158.177.112.229 master01.example.com master01
@@ -115,7 +115,7 @@ cat << EOF > /etc/hosts
 158.177.112.238 node01.example.com node01
 158.177.112.227 infra.example.com infra
 EOF
-
+```
 ### Install and configure DNS
 I did DNS installation on my node02.example.com. I used dnsmasq following this steps:
 -	Use yum to install dnsmasq and bind-utils
